@@ -61,6 +61,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _inputChanged(String value) {
+    setState(() {
+      _counter = _counter + 10;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -95,6 +101,12 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            TextField(
+              onSubmitted: _inputChanged,
+              obscureText: true,
+              enableSuggestions: false,
+              autocorrect: false,
+            ),
             const Text(
               'You have pushed the button this many times:',
             ),
