@@ -25,6 +25,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: <String, WidgetBuilder>{
+        '/a': (BuildContext context) => const MyHomePage(title: 'page A'),
+        '/b': (BuildContext context) => const MyHomePage(title: 'page B'),
+        '/c': (BuildContext context) => const MyHomePage(title: 'page C'),
+      },
     );
   }
 }
@@ -61,9 +66,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _inputChanged(String value) {
+  void _inputChanged(BuildContext context, String value) {
     setState(() {
       _counter = _counter + 10;
+      if (_counter >= 50) {
+        Navigator.pushNamed(context, "/a");
+      }
     });
   }
 
@@ -102,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             TextField(
-              onSubmitted: _inputChanged,
+              onSubmitted: (value) => _inputChanged(context, value),
               obscureText: true,
               enableSuggestions: false,
               autocorrect: false,
