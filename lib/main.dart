@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'password_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
       routes: <String, WidgetBuilder>{
-        '/a': (BuildContext context) => const MyHomePage(title: 'page A'),
+        '/a': (BuildContext context) => const PasswordPage(title: 'page A'),
         '/b': (BuildContext context) => const MyHomePage(title: 'page B'),
         '/c': (BuildContext context) => const MyHomePage(title: 'page C'),
       },
